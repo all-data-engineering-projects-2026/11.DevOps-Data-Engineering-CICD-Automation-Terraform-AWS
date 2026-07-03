@@ -156,9 +156,9 @@ jobs:
           name: tfplan
           path: terraform
 
-      - name: Terraform plan
+      - name: Terraform apply
         working-directory: ./terraform
-        run: terraform plan --auto-approve tfplan
+        run: terraform apply --auto-approve tfplan
 
       - name: Save Terraform output
         working-directory: ./terraform

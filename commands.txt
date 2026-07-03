@@ -1,1 +1,7 @@
-pytest -> PYTHONPATH=. pytest tests -v
+to run pytest local -> PYTHONPATH=. pytest tests -v
+
+# run this in cli if athena query runs fails with > COLUMN_NOT_FOUND: Relation contains no accessible columns
+aws lakeformation grant-permissions \
+  --principal DataLakePrincipalIdentifier=arn:aws:iam::<ACCOUNT_ID>:user/<your-user-or-role> \
+  --resource '{"Table":{"DatabaseName":"dml-temperature-analysis-catalog","Name":"data"}}' \
+  --permissions "SELECT" "DESCRIBE"

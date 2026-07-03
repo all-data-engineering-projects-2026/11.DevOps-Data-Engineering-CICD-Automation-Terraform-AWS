@@ -1,5 +1,5 @@
 output "raw_bucket_name" {
-  description = "Name od the raw data s3 bucket"
+  description = "Name of the raw data s3 bucket"
   value = aws_s3_bucket.raw_data.id
 }
 

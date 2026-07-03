@@ -1,0 +1,5 @@
+pytest==9.1.1
+boto3>=1.40.0
+moto>=5.1.0
+pytest-cov>=6.0.0
+urllib3>=2.2.0,<3.0.0

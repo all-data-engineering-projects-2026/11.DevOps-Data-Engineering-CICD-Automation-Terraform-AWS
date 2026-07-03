@@ -1,0 +1,21 @@
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  default = "ap-south-1"
+}
+
+variable "project_name" {
+  default = "dml-temperature-analysis"
+  description = "The project name"
+}
+
+variable "use_existing_bucket" {
+  description = "set to true to use an existing bucket instead of creating new one"
+  type = bool
+  default = false
+}
+
+variable "existing_bucket_name" {
+  description = "The name of the s3 bucket resource"
+  type = string
+  default = "dml-temperature-analysis-raw-data"
+}

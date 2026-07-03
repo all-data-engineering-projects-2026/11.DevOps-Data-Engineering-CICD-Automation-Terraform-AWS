@@ -20,11 +20,11 @@ resource "null_resource" "empty_s3_bucket" {
 }
 
 resource "aws_s3_bucket" "raw_data" {
-  bucket        = "${var.project_name}-him-raw-data"
+  bucket        = "dml-temperature-analysis-him-raw-data"
   force_destroy = true
 
   tags = {
-    Name        = "${var.project_name}-him-raw-data"
+    Name        = "dml-temperature-analysis-him-raw-data"
     Environment = "dev"
   }
 
@@ -50,11 +50,14 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "raw_data" {
 }
 
 resource "aws_s3_object" "data_directory" {
+  depends_on = [null_resource.empty_s3_bucket]
   bucket = aws_s3_bucket.raw_data.id
   key    = "data/"
+  content = ""
 }
 
 resource "aws_s3_object" "temperature_data" {
+  depends_on = [null_resource.empty_s3_bucket]
   bucket       = aws_s3_bucket.raw_data.id
   key          = "data/temperature_data.csv"
   source       = "./../data/temperature_data.csv"
